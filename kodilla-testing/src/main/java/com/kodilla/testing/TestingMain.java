@@ -1,38 +1,30 @@
 package com.kodilla.testing;
 
-import com.kodilla.testing.calculator.Calculator;
-import com.kodilla.testing.user.SimpleUser;
+import com.kodilla.testing.collection.OddNumbersExterminator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestingMain {
     public static void main(String[] args) {
 
-        //SimpleUser test
-        final SimpleUser simpleUser = new SimpleUser("theForumUser");
-        final String result = simpleUser.getUsername();
+        final ArrayList<Integer> inputList = new ArrayList<>();
+        final List<Integer> outputOddList;
 
-        if (result.equals("theForumUser")) {
-            System.out.println("SimpleUser test OK");
-        } else {
-            System.out.println("SimpleUser test Error!");
-        }
-
-        //Calculator test
-
-        final int a = 5, b = 7;
-        final Calculator calc = new Calculator();
-
-
-        if (calc.add(a, b) == a + b) {
-            System.out.println("Calculator.add test OK");
-        } else {
-            System.out.println("Calculator.add test Error!");
+        for (Integer i = 1; i < 101; i++) {
+            System.out.println(i);
+            inputList.add(i);
         }
 
 
-        if (calc.subtract(a, b) == a - b) {
-            System.out.println("Calculator.subtract test OK");
-        } else {
-            System.out.println("Calculator.subtract test Error!");
+        OddNumbersExterminator oddNumExt = new OddNumbersExterminator();
+
+        outputOddList = oddNumExt.exterminate(inputList);
+
+        for (Integer val : outputOddList) {
+
+            System.out.println(val);
+
         }
     }
 }

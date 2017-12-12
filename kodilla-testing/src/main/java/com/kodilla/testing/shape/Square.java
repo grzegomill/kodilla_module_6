@@ -6,6 +6,7 @@ public class Square implements Shape {
 
     private double sideLength;
 
+
     @Override
     public String getShapeName() {
         return this.name;
@@ -19,4 +20,5 @@ public class Square implements Shape {
     public Square(double sideLength) {
         this.sideLength = sideLength;
     }
+
 }

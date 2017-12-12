@@ -17,6 +17,7 @@ public class Triangle implements Shape {
         return (1 / 2) * triangleBaseLength * triangleHeightLength;
     }
 
+
     public Triangle(double triangleBaseLength, double triangleHeightLength) {
         this.triangleBaseLength = triangleBaseLength;
         this.triangleHeightLength = triangleHeightLength;

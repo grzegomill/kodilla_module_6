@@ -24,11 +24,9 @@ public class ShapeCollector {
 
     boolean removeFigure(Shape shape) {
 
-       // if (this.shapeCollector.contains(shape)) {
-            return this.shapeCollector.remove(shape);
-      //  }
 
-      //  return false;
+        return this.shapeCollector.remove(shape);
+
     }
 
 

@@ -51,10 +51,7 @@ public class StatisticCalculateTestSuite {
         assertEquals(0, statCalc.getUsersCount());
 
         //gdy liczba użytkowników = 100  - reszta dowolna
-        this.parametersTest(statCalc, statisticsMock, 100, 50, 90);
-
-        //gdy liczba postów = 0 - reszta dowolna
-        this.parametersTest(statCalc, statisticsMock, 13, 0, 0);
+        this.parametersTest(statCalc, statisticsMock, 100, 55, 93);
 
         //gdy liczba postów = 0 - reszta dowolna
         this.parametersTest(statCalc, statisticsMock, 13, 0, 0);

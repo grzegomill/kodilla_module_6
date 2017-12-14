@@ -12,7 +12,6 @@ import static org.mockito.Mockito.when;
 public class StatisticCalculateTestSuite {
 
     private List<String> setTestUserNamesList(String str, int max) {
-
         final List<String> userNamesMax = new ArrayList<>();
         for (int i = 0; i < max; i++) {
             userNamesMax.add(str + i);
@@ -39,7 +38,6 @@ public class StatisticCalculateTestSuite {
 
         statCalc.showStatistics();
     }
-
 
     @Test
     public void testCalculateAdvStatistic() {

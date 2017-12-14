@@ -1,15 +1,13 @@
 package com.kodilla.testing.forum.statistics;
 
-public class StatisticCalculate
-
-{
+public class StatisticCalculate {
     /*
-Ilość użytkowników
-Ilość postów
-Ilość komentarzy
-Średnia ilość postów na użytkownika
-Średnia ilość komentarzy na użytkownika
-Średnia ilość komentarzy na post
+    Ilość użytkowników
+    Ilość postów
+    Ilość komentarzy
+    Średnia ilość postów na użytkownika
+    Średnia ilość komentarzy na użytkownika
+    Średnia ilość komentarzy na post
 */
     private int usersCount;
     private int postsCount;

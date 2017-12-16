@@ -4,19 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookLibrary {
+
     private LibraryDatabase libraryDatabase;
 
 
     public BookLibrary(LibraryDatabase libraryDatabase) {
         this.libraryDatabase = libraryDatabase;
-
-
     }
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
-        List<Book> bookList = new ArrayList<>();
-
-        return bookList;
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
     }
 
     public List<Book> listBooksWithCondition(String titleFragment) {

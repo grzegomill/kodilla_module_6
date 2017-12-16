@@ -1,6 +1,6 @@
 package com.kodilla.testing.forum.statistics;
 
-public class StatisticCalculate {
+public class StatisticsCalculate {
     /*
     Ilość użytkowników
     Ilość postów

@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class StatisticCalculateTestSuite {
+public class StatisticsCalculateTestSuite {
 
     private List<String> setTestUserNamesList(String str, int max) {
         final List<String> userNamesMax = new ArrayList<>();
@@ -19,7 +19,7 @@ public class StatisticCalculateTestSuite {
         return userNamesMax;
     }
 
-    private void parametersTest(StatisticCalculate statCalc, Statistics statisticsMock, int expUsers, int expPosts, int expComments) {
+    private void parametersTest(StatisticsCalculate statCalc, Statistics statisticsMock, int expUsers, int expPosts, int expComments) {
 
         // when
         when(statisticsMock.usersNames()).thenReturn(setTestUserNamesList("Test_", expUsers));
@@ -44,7 +44,7 @@ public class StatisticCalculateTestSuite {
 
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        StatisticCalculate statCalc = new StatisticCalculate();
+        StatisticsCalculate statCalc = new StatisticsCalculate();
 
         //gdy liczba użytkowników = 0   - wszystko 0
         statCalc.calculateAdvStatistics(statisticsMock);

@@ -28,6 +28,8 @@ public class StatisticsCalculateTestSuite {
 
         statCalc.calculateAdvStatistics(statisticsMock);
         //then
+
+
         assertEquals(expUsers, statCalc.getUsersCount());
         assertEquals(expPosts, statCalc.getPostsCount());
         assertEquals(expComments, statCalc.getCommentCount());
@@ -37,6 +39,7 @@ public class StatisticsCalculateTestSuite {
         assertEquals(expUsers == 0 ? 0 : (double) expPosts / expUsers, statCalc.getAvgPostsPerUser(), 0.0);
 
         statCalc.showStatistics();
+
     }
 
     @Test
@@ -68,5 +71,14 @@ public class StatisticsCalculateTestSuite {
         //gdy liczba komentarzy > liczba postów
         this.parametersTest(statCalc, statisticsMock, 7531, 321, 777);
 
+
+        //gdy userNames  jest  null
+        when(statisticsMock.usersNames()).thenReturn(null);
+
+        statCalc.calculateAdvStatistics(statisticsMock);
+
+        assertEquals(0, statCalc.getUsersCount());
+
+        statCalc.showStatistics();
     }
 }

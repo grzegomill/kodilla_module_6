@@ -20,7 +20,7 @@ public class StatisticsCalculate {
 
         postsCount = statistics.postsCount();
         commentCount = statistics.commentsCount();
-        usersCount = statistics.usersNames().size();
+        usersCount = (statistics.usersNames() == null ? 0 : statistics.usersNames().size());
 
         avgPostsPerUser = (usersCount == 0) ? 0 : (double) postsCount / usersCount;
         avgCommentsPerPost = (postsCount == 0) ? 0 : (double) commentCount / postsCount;

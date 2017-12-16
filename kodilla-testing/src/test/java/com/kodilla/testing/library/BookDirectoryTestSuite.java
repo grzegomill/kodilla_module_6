@@ -79,32 +79,38 @@ public class BookDirectoryTestSuite {
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
 
+    /*
+    Przetestuj tę metodę w różnych scenariuszach:
+    gdy użytkownik nie ma wypożyczonych żadnych książek,
+    gdy ma wypożyczoną jedną książkę,
+    gdy ma wypożyczone 5 książek.*/
+
     @Test  // Test z zadania Zadanie: rozbudowujemy klasę BookLibrary
     public void testListBooksInHandsOf() {
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOf10Books = generateListOfNBooks(10);
-        LibraryUser libraryUser10 = new LibraryUser("Janusz", "Kujava", "12345678901");
-        List<Book> resultListOf50Books = generateListOfNBooks(50);
-        LibraryUser libraryUser50 = new LibraryUser("Janusz", "Pojava", "12345678902");
+        List<Book> resultListOf1Books = generateListOfNBooks(1);
+        LibraryUser libraryUser1 = new LibraryUser("Janusz", "Kujava", "12345678901");
+        List<Book> resultListOf5Books = generateListOfNBooks(5);
+        LibraryUser libraryUser5 = new LibraryUser("Janusz", "Pojava", "12345678902");
         List<Book> resultListOfZeroBooks = new ArrayList<>();
         LibraryUser libraryUserZero = new LibraryUser("Janusz", "Cajava", "12345678903");
         when(libraryDatabaseMock
-                .listBooksInHandsOf(libraryUser10))
-                .thenReturn(resultListOf10Books);
+                .listBooksInHandsOf(libraryUser1))
+                .thenReturn(resultListOf1Books);
         when(libraryDatabaseMock
-                .listBooksInHandsOf(libraryUser50))
-                .thenReturn(resultListOf50Books);
+                .listBooksInHandsOf(libraryUser5))
+                .thenReturn(resultListOf5Books);
         when(libraryDatabaseMock
                 .listBooksInHandsOf(libraryUserZero))
                 .thenReturn(resultListOfZeroBooks);
         // When
-        List<Book> theListOfBooks10 = bookLibrary.listBooksInHandsOf(libraryUser10);
-        List<Book> theListOfBooks50 = bookLibrary.listBooksInHandsOf(libraryUser50);
+        List<Book> theListOfBooks1 = bookLibrary.listBooksInHandsOf(libraryUser1);
+        List<Book> theListOfBooks5 = bookLibrary.listBooksInHandsOf(libraryUser5);
         List<Book> theListOfBooksZero = bookLibrary.listBooksInHandsOf(libraryUserZero);
         //Then
-        assertEquals(10, theListOfBooks10.size());
-        assertEquals(50, theListOfBooks50.size());
+        assertEquals(1, theListOfBooks1.size());
+        assertEquals(5, theListOfBooks5.size());
         assertEquals(0, theListOfBooksZero.size());
     }
 }

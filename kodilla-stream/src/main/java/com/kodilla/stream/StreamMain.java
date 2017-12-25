@@ -38,7 +38,7 @@ public class StreamMain {
 
         poemBeautifier.beautify("text to upper", (text) -> text.toUpperCase());
 
-        poemBeautifier.beautify("jan jakub kowalski",
+        poemBeautifier.beautify("jAN jaKub koWalski",
 
                 (text) ->
                 {

@@ -1,13 +1,11 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.lambda.Executor;
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.lambda.Processor;
-import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.beautifier.PoemBeautifier;
 
 public class StreamMain {
 
     public static void main(String[] args) {
+/*
 
         Processor processor = new Processor();
         // ExecutorSaySamothing executorSaySamothing = new ExecutorSaySamothing();
@@ -31,5 +29,30 @@ public class StreamMain {
         expressionExecutor.executeExpression(3, 4, FunctionalCalculator::addAToB);
         expressionExecutor.executeExpression(3, 4, FunctionalCalculator::subBFromA);
         expressionExecutor.executeExpression(3, 4, FunctionalCalculator::divideAByB);
+
+*/
+
+        PoemBeautifier poemBeautifier = new PoemBeautifier();
+
+        poemBeautifier.beautify("TEXT TO BEAUTIFY", (text) -> ">>" + text.toLowerCase() + "<<<");
+
+        poemBeautifier.beautify("text to upper", (text) -> text.toUpperCase());
+
+        poemBeautifier.beautify("jan jakub kowalski",
+
+                (text) ->
+                {
+                    String firstLetter, strText, phrase = "";
+                    String[] words = text.toLowerCase().split(" ");
+                    for (String word : words) {
+                        firstLetter = word.substring(0, 1);
+                        strText = word.replaceFirst(firstLetter, firstLetter.toUpperCase());
+                        phrase = (phrase == "") ? strText : phrase + " " + strText;
+                    }
+                    return phrase;
+                }
+
+        );
+
     }
 }

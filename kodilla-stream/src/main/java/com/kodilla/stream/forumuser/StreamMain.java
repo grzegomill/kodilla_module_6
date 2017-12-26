@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-//StreamMain for forum user
+// StreamMain for forum user
 
 public class StreamMain {
 

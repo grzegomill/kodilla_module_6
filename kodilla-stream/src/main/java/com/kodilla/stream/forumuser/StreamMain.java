@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 public class StreamMain {
 
     public static void main(String[] args) {
-        Forum forum = new Forum();
+        final Forum forum = new Forum();
 
-        Map<Integer, ForumUser> userMap = forum.getForumUsers().stream()
+        final Map<Integer, ForumUser> userMap = forum.getForumUsers().stream()
                 .filter(x -> x.getSex() == 'M')
                 .filter(x -> !x.getBirthDate().isAfter(LocalDate.now().plusYears(-20)))
                 .filter(x -> x.getPublicPostCount() > 0)

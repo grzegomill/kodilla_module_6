@@ -17,14 +17,14 @@ public class FirstChallenge {
 
             double result = firstChallenge.divide(a, b);
 
-            System.out.println(result);
+            System.out.println("Wynik:" + result);
 
         } catch (ArithmeticException e) {
 
-            System.out.println("Niedozwolone dzielenie przez 0!");
+            System.out.println("Niedozwolone dzielenie przez 0 !");
         } finally {
 
-            System.out.println("Koniec obliczeń.");
+            System.out.println("Koniec obliczeń a/b dla parametrów a=" + a + " b=" + b);
         }
 
     }

@@ -5,8 +5,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 
 import static java.util.stream.Collectors.toList;
 
@@ -59,10 +61,12 @@ public class BoardTestSuite {
         TaskList taskListToDo = new TaskList("To do");
         taskListToDo.addTask(task1);
         taskListToDo.addTask(task3);
+
         TaskList taskListInProgress = new TaskList("In progress");
         taskListInProgress.addTask(task5);
         taskListInProgress.addTask(task4);
         taskListInProgress.addTask(task2);
+
         TaskList taskListDone = new TaskList("Done");
         taskListDone.addTask(task6);
         //board
@@ -138,4 +142,29 @@ public class BoardTestSuite {
         Assert.assertEquals(2, longTasks);
     }
 
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+
+
+        OptionalDouble value = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains) //inProgressTasks::contains)
+                .flatMap(tL -> tL.getTasks().stream())
+                .map(t -> t.getCreated())
+                .mapToInt(d -> Period.between(d, LocalDate.now()).getDays())
+                .average();
+
+        double average = value.isPresent() ? value.getAsDouble() : 0.0;
+
+
+        Assert.assertEquals(10.0, average, 0);
+
+
+    }
 }

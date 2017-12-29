@@ -3,13 +3,12 @@ package com.kodilla.exception.io;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class FileReader {
 
-    public void readFile() {
+    public void readFile() throws FileReaderException {
 
         ClassLoader classLoader = getClass().getClassLoader();
 
@@ -25,7 +24,7 @@ public class FileReader {
 
         } catch (IOException e) {
 
-            System.out.println("Oh no! " + e.toString());
+            throw new FileReaderException();
         } finally {
             System.out.println("finally");
         }

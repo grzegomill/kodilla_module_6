@@ -1,17 +1,17 @@
 package com.kodilla.exception.main;
 
-import com.kodilla.exception.io.FileReaderWithoutHandling;
-
-import java.io.IOException;
+import com.kodilla.exception.io.FileReader;
+import com.kodilla.exception.io.FileReaderException;
 
 public class ExceptionModuleRunner {
 
     public static void main(String[] args) {
-        FileReaderWithoutHandling fileReaderWithoutHandling = new FileReaderWithoutHandling();
+        FileReader fileReader = new FileReader();
         try {
-            fileReaderWithoutHandling.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+            fileReader.readFile();
+        } catch (FileReaderException e) {
+
+
         }
 
     }

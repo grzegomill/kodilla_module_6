@@ -2,33 +2,41 @@ package com.kodilla.exception.test;
 
 public class FlightMain {
 
-    private static FlightMap flightMap;
+    private static FlightMap flightMap = new FlightMap();
+    private String message = "";
 
     public static void main(String[] args) {
 
-        flightMap = new FlightMap();
+        boolean retVal = checkFlight(new Flight("Warsaw", "Moscow"));
 
-        checkFlight(new Flight("Warsaw", "Moscow"));
+        retVal = FlightMain.checkFlight(new Flight("Warsaw", "Warsaw"));
 
-        checkFlight(new Flight("Warsaw", "Warsaw"));
+        retVal = FlightMain.checkFlight(new Flight("Warsaw", "Przemyśl"));
 
-        checkFlight(new Flight("Warsaw", "Przemyśl"));
+        retVal = FlightMain.checkFlight(new Flight("Warsaw", "London"));
 
-        checkFlight(new Flight("Warsaw", "London"));
     }
 
-    private static void checkFlight(Flight flight) {
+    private static boolean checkFlight(Flight flight) {
 
-        String message = "";
-        String arrivalAirPort = flight.getArrivalAirport();
+        boolean retVal = false;
 
         try {
-            message = flightMap.findFlight(flight) ? "Flight to " + arrivalAirPort + " is available"
-                    : "Flight to " + arrivalAirPort + " is unavailable";
+
+            retVal = flightMap.findFlight(flight);
+
+            System.out.println(
+                    retVal ? "Flight to " + flight.getArrivalAirport() + " is available"
+                            : "Flight to " + flight.getArrivalAirport() + " is unavailable");
+
+            return retVal;
+
         } catch (RouteNotFoundException e) {
-            message = "Flight to " + arrivalAirPort + " does not exist!";
-        } finally {
-            System.out.println(message);
+
+            System.out.println("Flight to " + flight.getArrivalAirport() + " does not exist!");
+
         }
+
+        return retVal;
     }
 }

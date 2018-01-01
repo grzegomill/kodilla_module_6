@@ -16,7 +16,9 @@ public class FileReader {
 
         try {
 
-            Stream<String> fileLines = Files.lines(Paths.get(file.getPath()));
+            //  Stream<String> fileLines = Files.lines(Paths.get(file.getPath()));
+
+            Stream<String> fileLines = Files.lines(Paths.get("files/test.txt"));
 
             fileLines.
                     sorted()
@@ -25,6 +27,8 @@ public class FileReader {
         } catch (IOException e) {
 
             throw new FileReaderException();
+
+
         } finally {
             System.out.println("finally");
         }

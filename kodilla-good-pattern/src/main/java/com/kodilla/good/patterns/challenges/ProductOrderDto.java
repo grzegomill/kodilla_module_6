@@ -1,11 +1,26 @@
 package com.kodilla.good.patterns.challenges;
 
-public class ProductOrderDto {
-    private User user;
-    private boolean flag;
+public final class ProductOrderDto {
 
-    public ProductOrderDto(User user, boolean flag) {
+    final private User user;
+    final private Product product;
+    final private boolean isOrdered;
+
+    public ProductOrderDto(final User user, final Product product, final boolean isOrdered) {
         this.user = user;
-        this.flag = flag;
+        this.product = product;
+        this.isOrdered = isOrdered;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public boolean isOrdered() {
+        return isOrdered;
     }
 }

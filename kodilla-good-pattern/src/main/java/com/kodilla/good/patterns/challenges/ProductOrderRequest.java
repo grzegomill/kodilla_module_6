@@ -1,10 +1,27 @@
 package com.kodilla.good.patterns.challenges;
 
-public interface ProductOrderRequest {
+public final class ProductOrderRequest implements OrderRequest {
 
-    User getUser();
+    final private User user;
+    final private Product product;
+    final private int quantity;
 
-    Product getProduct();
+    public ProductOrderRequest(final User user, final Product product, final int quantity) {
+        this.user = user;
+        this.product = product;
+        this.quantity = quantity;
+    }
 
-    int getQuantity();
+    public User getUser() {
+        return user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
 }

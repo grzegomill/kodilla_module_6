@@ -2,30 +2,40 @@ package com.kodilla.good.patterns.challenges;
 
 public class ProductOrderProcessor {
 
-
     private InformationService informationService;
-    private ProductOrderService productOrderService;
-    private ProductOrderRepository productOrderRepository;
+    private OrderService orderService;
+    private OrderRepository orderRepository;
 
     public ProductOrderProcessor(final InformationService informationService,
-                                 final ProductOrderService rentalService,
-                                 final ProductOrderRepository rentalRepository) {
+                                 final OrderService orderService,
+                                 final OrderRepository orderRepository) {
         this.informationService = informationService;
-        this.productOrderService = rentalService;
-        this.productOrderRepository = rentalRepository;
+        this.orderService = orderService;
+        this.orderRepository = orderRepository;
     }
 
-    public ProductOrderDto process(final ProductOrderRequest productOrderRequest) {
-        boolean isOrdered = productOrderService.order(productOrderRequest.getUser(), productOrderRequest.getProduct(),
-                productOrderRequest.getQuantity());
+    public void setInformationService(InformationService informationService) {
+        this.informationService = informationService;
+    }
+
+    public ProductOrderDto process(final OrderRequest orderRequest) {
+
+        boolean isOrdered = orderService.order(orderRequest.getUser(), orderRequest.getProduct(),
+                orderRequest.getQuantity());
 
         if (isOrdered) {
-            informationService.inform(productOrderRequest.getUser());
-            productOrderRepository.createOrder(productOrderRequest.getUser(), productOrderRequest.getProduct(),
-                    productOrderRequest.getQuantity());
-            return new ProductOrderDto(productOrderRequest.getUser(), true);
+
+            informationService.inform(orderRequest.getUser());
+
+            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getProduct(),
+                    orderRequest.getQuantity());
+
+            return new ProductOrderDto(orderRequest.getUser(), orderRequest.getProduct(), true);
+
         } else {
-            return new ProductOrderDto(productOrderRequest.getUser(), false);
+
+            return new ProductOrderDto(orderRequest.getUser(), orderRequest.getProduct(), false);
+
         }
     }
 }

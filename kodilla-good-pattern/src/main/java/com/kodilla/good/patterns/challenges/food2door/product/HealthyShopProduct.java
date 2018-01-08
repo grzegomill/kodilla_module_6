@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.food2door;
+package com.kodilla.good.patterns.challenges.food2door.product;
 
 public class HealthyShopProduct implements Product {
 
@@ -37,6 +37,7 @@ public class HealthyShopProduct implements Product {
         return unitPrice;
     }
 
+
     public String getUnitType() {
         return unitType;
     }
@@ -47,6 +48,7 @@ public class HealthyShopProduct implements Product {
         return "HealthyShopProduct{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", unitPrice=" + unitPrice +
                 ", unitType='" + unitType + '\'' +
                 '}';

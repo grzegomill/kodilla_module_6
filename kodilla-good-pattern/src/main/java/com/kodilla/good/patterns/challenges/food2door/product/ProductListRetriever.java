@@ -1,10 +1,13 @@
-package com.kodilla.good.patterns.challenges.food2door;
+package com.kodilla.good.patterns.challenges.food2door.product;
+
+import com.kodilla.good.patterns.challenges.food2door.producer.Producer;
+import com.kodilla.good.patterns.challenges.food2door.product.Product;
 
 import java.util.Map;
 
 public class ProductListRetriever {
 
-    final private Map<Integer, Product> productsMap;
+    private final Map<Integer, Product> productsMap;
 
     public ProductListRetriever(Producer producer) {
 

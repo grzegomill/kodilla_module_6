@@ -1,6 +1,14 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
-import java.util.Map;
+import com.kodilla.good.patterns.challenges.food2door.producer.ExtraFoodShop;
+import com.kodilla.good.patterns.challenges.food2door.producer.HealthyShop;
+import com.kodilla.good.patterns.challenges.food2door.producer.Producer;
+import com.kodilla.good.patterns.challenges.food2door.product.ProductCatalog;
+import com.kodilla.good.patterns.challenges.food2door.product.ProductsCatalogImp;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 1. Pobieramy informacje o dostawcy, oraz ilości i rodzaju produktu,
@@ -13,31 +21,21 @@ public class Application {
 
     public static void main(String[] args) {
 
-        final ProductsCatalog productsCatalog = new ProductsCatalog();
+        final List<Producer> producers = new ArrayList<>();
+
         final Producer producerExtraFoodShop = new ExtraFoodShop();
         final Producer producerHealthyShop = new HealthyShop();
 
-        Producer[] producers = {producerExtraFoodShop, producerHealthyShop};
+        producers.add(producerExtraFoodShop);
+        producers.add(producerHealthyShop);
 
-        productsCatalog.updateProductsCatalog(producers);
+        final ProductCatalog productsCatalog = new ProductsCatalogImp(producers);
 
-        Map<Integer, Product> products = productsCatalog.getProductsByProducer(producerExtraFoodShop);
+        productsCatalog.orderProduct(1, 12);
 
+        productsCatalog.orderProduct(4, 15);
 
-        producerExtraFoodShop.setOrder(new Order(products.get(101), 120));
-
-        boolean result = producerExtraFoodShop.process();
-
-        System.out.println("Order process result is " + result + ". -> " + producerExtraFoodShop.toString());
-
-
-        products = productsCatalog.getProductsByProducer(producerHealthyShop);
-
-        producerHealthyShop.setOrder(new Order(products.get(333), 12));
-
-        boolean result1 = producerHealthyShop.process();
-
-        System.out.println("Order process result is " + result1 + ". -> " + producerHealthyShop.toString());
+        productsCatalog.orderProduct(55, 5);
 
     }
 }

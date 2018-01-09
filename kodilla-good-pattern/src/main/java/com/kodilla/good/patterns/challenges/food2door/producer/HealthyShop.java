@@ -1,15 +1,24 @@
 package com.kodilla.good.patterns.challenges.food2door.producer;
 
 import com.kodilla.good.patterns.challenges.food2door.order.Order;
-import com.kodilla.good.patterns.challenges.food2door.product.HealthyShopProduct;
 import com.kodilla.good.patterns.challenges.food2door.product.Product;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HealthyShop implements Producer {
 
-    final private String name = "HealthyShop";
+    private final String name = "HealthyShop";
+
+    private final Map<Integer, Product> productsMap = new HashMap<>();
+
+    public HealthyShop(int indexStart, List<Product> products) {
+
+        for (Product product : products) {
+            productsMap.put(indexStart++, product);
+        }
+    }
 
     @Override
     public String getName() {
@@ -27,13 +36,6 @@ public class HealthyShop implements Producer {
 
     @Override
     public Map<Integer, Product> retrieveProducts() {
-
-        Map<Integer, Product> productsMap = new HashMap<>();
-
-        productsMap.put(4, new HealthyShopProduct(10, "Mąka ryżowa", " opis", 3, "kg"));
-        productsMap.put(5, new HealthyShopProduct(20, "Mleko", " opis", 4, "litr"));
-        productsMap.put(6, new HealthyShopProduct(30, "Masło", " opis", 7, "sztuka"));
-
         return productsMap;
     }
 

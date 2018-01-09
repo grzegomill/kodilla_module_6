@@ -28,15 +28,12 @@ public class Application {
         productsE.add(new ExtraFoodShopProduct(20, "Kiwi", " from Africa", 2));
         productsE.add(new ExtraFoodShopProduct(30, "Lemon", " from Africa", 7));
 
-        final Producer producerExtraFoodShop = new ExtraFoodShop(1001, productsE);
-
-
         productsH.add(new HealthyShopProduct(10, "Mąka ryżowa", " opis", 3, "kg"));
         productsH.add(new HealthyShopProduct(20, "Mleko", " opis", 4, "litr"));
         productsH.add(new HealthyShopProduct(30, "Masło", " opis", 7, "sztuka"));
 
+        final Producer producerExtraFoodShop = new ExtraFoodShop(1001, productsE);
         final Producer producerHealthyShop = new HealthyShop(2001, productsH);
-
 
         producers.add(producerExtraFoodShop);
         producers.add(producerHealthyShop);

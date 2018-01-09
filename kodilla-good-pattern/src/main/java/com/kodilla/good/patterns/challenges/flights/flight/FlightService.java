@@ -34,7 +34,26 @@ public class FlightService {
 
     public void findFlightsFromTo(String from, String to) {
 
+        List<Flight> flightList = repository.getFlights();
+
+        for (int i = 0; i < flightList.size(); i++) {
+
+            if (flightList.get(i).getFrom().equals(from)) {
+
+                getDeep(from);
+
+            }
+
+        }
 
     }
+
+
+    private List<Flight> getDeep(String from) {
+
+
+        return null;
+    }
+
 
 }

@@ -1,6 +1,5 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
-
 import com.kodilla.good.patterns.challenges.food2door.producer.ExtraFoodShop;
 import com.kodilla.good.patterns.challenges.food2door.producer.HealthyShop;
 import com.kodilla.good.patterns.challenges.food2door.producer.Producer;

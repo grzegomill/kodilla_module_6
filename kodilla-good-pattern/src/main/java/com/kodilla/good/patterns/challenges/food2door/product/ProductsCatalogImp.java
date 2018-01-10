@@ -30,7 +30,7 @@ public class ProductsCatalogImp implements ProductCatalog {
 
         Producer producer = getProducerByProductId(productId);
 
-        Product product = getProductProductId(productId);
+        Product product = getProductById(productId);
 
         boolean result = false;
 
@@ -50,7 +50,7 @@ public class ProductsCatalogImp implements ProductCatalog {
 
     }
 
-    private Product getProductProductId(int productId) {
+    private Product getProductById(int productId) {
 
         if (productsCatalog.containsKey(productId)) {
             return productsCatalog.get(productId).getProduct();

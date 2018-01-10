@@ -15,12 +15,12 @@ public class ProductsCatalogImp implements ProductCatalog {
 
         for (Producer producer : producers) {
 
-            Map<Integer, Product> ProductMap = new ProductListRetriever(producer).getProducts();
+            Map<Integer, Product> productMap = new ProductListRetriever(producer).getProducts();
 
-            for (Map.Entry entry : ProductMap.entrySet()) {
+            for (Map.Entry<Integer, Product> entry : productMap.entrySet()) {
 
-                productsCatalog.put((Integer) entry.getKey(),
-                        new ProductProducerEntry((Product) entry.getValue(), producer));
+                productsCatalog.put(entry.getKey(),
+                        new ProductProducerEntry(entry.getValue(), producer));
             }
         }
     }

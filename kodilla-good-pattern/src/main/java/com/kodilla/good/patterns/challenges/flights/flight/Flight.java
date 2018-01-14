@@ -1,11 +1,11 @@
 package com.kodilla.good.patterns.challenges.flights.flight;
 
-public class Flight {
+public final class Flight {
 
-    private String from;
-    private String to;
+    private final String from;
+    private final String to;
 
-    public Flight(String from, String to) {
+    public Flight(final String from, final String to) {
         this.from = from;
         this.to = to;
     }

@@ -4,23 +4,19 @@ import com.kodilla.good.patterns.challenges.flights.flight.Flight;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class FlightsRepository implements Repository {
+public final class FlightsRepository implements Repository {
 
-    private final List<Flight> directFlights = new ArrayList<>();
+    private List<Flight> directFlights = new ArrayList<>();
 
-    public FlightsRepository() {
+    public FlightsRepository(List<Flight> flights) {
 
-        directFlights.add(new Flight("GDAŃSK", "WARSZAWA"));
-        directFlights.add(new Flight("GDAŃSK", "POZNAŃ"));
-        directFlights.add(new Flight("WARSZAWA", "KRAKÓW"));
-        directFlights.add(new Flight("ŁÓDŹ", "WARSZAWA"));
-        directFlights.add(new Flight("WARSZAWA", "KATOWICE"));
-        directFlights.add(new Flight("WARSZAWA", "OLSZTYN"));
-        directFlights.add(new Flight("POZNAŃ", "WROCŁAW"));
-        directFlights.add(new Flight("KATOWICE", "RZESZÓW"));
-        directFlights.add(new Flight("WROCŁAW", "WARSZAWA"));
-
+        if (flights != null) {
+            directFlights = flights.stream().collect(Collectors.toList());
+        } else {
+            directFlights = null;
+        }
     }
 
     public List<Flight> getFlights() {

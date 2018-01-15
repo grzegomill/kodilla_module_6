@@ -12,7 +12,7 @@ public class Application {
 
     public static void main(String[] args) {
 
-        List<Flight> flights = new ArrayList<>();
+        final List<Flight> flights = new ArrayList<>();
 
         flights.add(new Flight("GDAŃSK", "WARSZAWA"));
         flights.add(new Flight("GDAŃSK", "POZNAŃ"));

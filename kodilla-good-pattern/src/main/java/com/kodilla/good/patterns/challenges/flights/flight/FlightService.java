@@ -52,7 +52,7 @@ public final class FlightService {
 
         if (from != null && to != null) {
 
-            checkedPlaces.add(from);
+            this.checkedPlaces.add(from);
 
             this.getFlights(from, to, "");
 
@@ -66,7 +66,7 @@ public final class FlightService {
 
                     for (int i = 0; i < s.length - 1; i++) {
 
-                        flight = getDirectFlightsFromTo(s[i], s[i + 1]);
+                        flight = getDirectFlightFromTo(s[i], s[i + 1]);
 
                         flights.add(flight);
                     }
@@ -83,7 +83,7 @@ public final class FlightService {
     }
 
 
-    private Flight getDirectFlightsFromTo(String from, String to) {
+    private Flight getDirectFlightFromTo(String from, String to) {
 
         List<Flight> flights = repository.getFlights();
 

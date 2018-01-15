@@ -43,7 +43,7 @@ public final class FlightService {
         return null;
     }
 
-
+    // lista flights
     public List<List<Flight>> findFlightsFromTo(final String from, final String to) {
 
         final List<List<Flight>> flightsList = new ArrayList<>();
@@ -79,7 +79,7 @@ public final class FlightService {
 
         }
 
-        return null;
+        return new ArrayList<>();  //  nie zwracać null tylko pustą listę
     }
 
 

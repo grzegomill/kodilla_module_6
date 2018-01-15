@@ -4,22 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public final class TaskList {
+final class TaskList {
 
     private final List<String> tasks;
 
-    public TaskList() {
+    TaskList() {
         this.tasks = new ArrayList<>();
     }
 
 
-    public boolean addTask(String taskText) {
+    boolean addTask(String taskName) {
 
-        return tasks.add(taskText);
+        return tasks.add(taskName);
     }
 
-    public String getTask(int i) {
+    boolean removeTask(String taskName) {
 
-        return tasks.get(i);
+        return tasks.remove(taskName);
+    }
+
+    boolean contains(String taskName) {
+
+        return tasks.contains(taskName);
+
     }
 }

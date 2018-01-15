@@ -1,33 +1,43 @@
 package com.kodilla.spring.portfolio;
 
-
-import junit.framework.Assert;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertTrue;
+import static junit.framework.TestCase.assertFalse;
 
 @SpringBootTest
 public class BoardTestSuite {
 
     @Test
-    public void testTaskAdd() {
+    public void testTaskChangeStatus() {
+
         //Given
         final ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         final Board board = context.getBean(Board.class);
 
-        final TaskList doneList = board.getDoneList();
-        final TaskList inProgressList = board.getInProgressList();
-        final TaskList toDoList = board.getToDoList();
+        final String taskName = "Przerobić rozdział 11";
 
-        doneList.addTask("done 1 task");
-        inProgressList.addTask("in progress 1 task");
-        toDoList.addTask("to do list 1 task");
+        // When
+        board.addTaskToDo(taskName);
 
-        assertEquals("done 1 task", doneList.getTask(0));
-        assertEquals("in progress 1 task", inProgressList.getTask(0));
-        assertEquals("to do list 1 task", toDoList.getTask(0));
+        // Then
+        assertTrue(board.isToDo(taskName));
+
+        assertTrue(board.setTaskAsInProgress(taskName));
+        assertFalse(board.setTaskAsInProgress(taskName));
+
+        assertTrue(board.isInProgress(taskName));
+        assertFalse(board.isToDo(taskName));
+
+        assertTrue(board.setTaskAsDone(taskName));
+        assertFalse(board.setTaskAsDone(taskName));
+
+        assertTrue(board.isDone(taskName));
+        assertFalse(board.isInProgress(taskName));
+        assertFalse(board.isToDo(taskName));
+        
     }
 }

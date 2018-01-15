@@ -6,21 +6,41 @@ public final class Board {
     private final TaskList inProgressList;
     private final TaskList doneList;
 
-    public Board(TaskList toDoList, TaskList inProgressList, TaskList doneList) {
+    public Board(final TaskList toDoList, final TaskList inProgressList, final TaskList doneList) {
         this.toDoList = toDoList;
         this.inProgressList = inProgressList;
         this.doneList = doneList;
     }
 
-    public TaskList getToDoList() {
-        return toDoList;
+    boolean addTaskToDo(String taskName) {
+
+        return toDoList.addTask(taskName);
     }
 
-    public TaskList getInProgressList() {
-        return inProgressList;
+    boolean setTaskAsInProgress(String taskName) {
+
+        return this.toDoList.removeTask(taskName) && this.inProgressList.addTask(taskName);
+
     }
 
-    public TaskList getDoneList() {
-        return doneList;
+    boolean setTaskAsDone(String taskName) {
+
+        return this.inProgressList.removeTask(taskName) && this.doneList.addTask(taskName);
+
+    }
+
+    boolean isToDo(String taskName) {
+
+        return toDoList.contains(taskName);
+    }
+
+    boolean isInProgress(String taskName) {
+
+        return inProgressList.contains(taskName);
+    }
+
+    boolean isDone(String taskName) {
+
+        return doneList.contains(taskName);
     }
 }

@@ -1,27 +1,27 @@
 package com.kodilla.spring.forum;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import static org.junit.Assert.assertEquals;
+
 @SpringBootTest
-public class ForumUserTestSuite {
+public final class ForumUserTestSuite {
 
     @Test
     public void testGetUsername() {
 
         //Given
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.forum");
-        ForumUser forumUser = context.getBean(ForumUser.class);
+        final ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.forum");
+        final ForumUser forumUser = context.getBean(ForumUser.class);
 
         //When
-
-        String userName = forumUser.getUsername();
+        final String userName = forumUser.getUsername();
 
         //Then
-        Assert.assertEquals("John Smith", userName);
+        assertEquals("John Smith", userName);
 
     }
 }

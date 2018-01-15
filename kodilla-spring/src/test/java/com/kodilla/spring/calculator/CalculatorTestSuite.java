@@ -19,10 +19,10 @@ public class CalculatorTestSuite {
 
         final Calculator calculator = context.getBean(Calculator.class);
 
-        double valAdd = calculator.add(5, 7);
-        double valSub = calculator.sub(15, 7);
-        double valMul = calculator.mul(3, 5);
-        double valDiv = calculator.div(12, 4);
+        final double valAdd = calculator.add(5, 7);
+        final double valSub = calculator.sub(15, 7);
+        final double valMul = calculator.mul(3, 5);
+        final double valDiv = calculator.div(12, 4);
 
         assertEquals(12, valAdd, 0);
         assertEquals(8, valSub, 0);

@@ -21,7 +21,8 @@ public class BoardTestSuite {
         final String taskName = "Przerobić rozdział 11";
 
         // When
-        board.addTaskToDo(taskName);
+
+        assertTrue(board.addTaskToDo(taskName));
 
         // Then
         assertTrue(board.isToDo(taskName));
@@ -38,6 +39,6 @@ public class BoardTestSuite {
         assertTrue(board.isDone(taskName));
         assertFalse(board.isInProgress(taskName));
         assertFalse(board.isToDo(taskName));
-        
+
     }
 }

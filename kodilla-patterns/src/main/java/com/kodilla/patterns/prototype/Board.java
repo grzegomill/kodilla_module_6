@@ -33,7 +33,6 @@ public final class Board extends Prototype {
     }
 
     public Board shallowCopy() throws CloneNotSupportedException
-    //
     {
         return (Board) super.clone();
     }

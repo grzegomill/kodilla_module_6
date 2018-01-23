@@ -59,6 +59,7 @@ public class DbManagerTestSuite {
         DbManager dbManager = DbManager.getInstance();
 
         //When
+        //lan
         String sqlQuery = "SELECT * FROM USERS";
 
 

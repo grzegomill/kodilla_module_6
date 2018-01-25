@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "TASKS")
-public class Task {
+public final class Task {
     private int id;
     private String description;
     private Date created;

@@ -13,4 +13,6 @@ public interface TaskDao extends CrudRepository<Task, Integer> {
 
 
     List<Task> findByDuration(int duration);
+
+    List<Task> findAllById(int id);
 }

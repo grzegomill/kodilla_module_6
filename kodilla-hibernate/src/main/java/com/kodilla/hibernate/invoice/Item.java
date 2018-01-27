@@ -19,14 +19,12 @@ public class Item {
     public Item() {
     }
 
-    public Item(
-            Invoice invoice,
-            Product product, BigDecimal price, int quantity, BigDecimal value) {
+    public Item(Product product, BigDecimal price, int quantity) {
         this.product = product;
         this.price = price;
         this.quantity = quantity;
-        this.value = value;
-        this.invoice = invoice;
+        this.value = price.multiply(new BigDecimal(quantity));
+
     }
 
     @Id
@@ -71,7 +69,7 @@ public class Item {
         return invoice;
     }
 
-    private void setInvoice(Invoice invoice) {
+    public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
     }
 

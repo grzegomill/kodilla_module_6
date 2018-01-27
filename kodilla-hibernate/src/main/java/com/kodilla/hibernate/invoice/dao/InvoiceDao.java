@@ -9,4 +9,6 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface InvoiceDao extends CrudRepository<Invoice, Integer> {
+
+    Invoice findByNumber(String number);
 }

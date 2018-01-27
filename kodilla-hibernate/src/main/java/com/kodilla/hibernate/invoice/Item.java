@@ -9,20 +9,24 @@ import java.math.BigDecimal;
 public class Item {
 
     private int id;
-    private Product product;
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
 
+    private Product product;     //relacja N:1 z encją Product
+    private Invoice invoice;    //relacja N:1 z encją Invoice
+
     public Item() {
     }
 
-
-    public Item(Product product, BigDecimal price, int quantity, BigDecimal value) {
+    public Item(
+            Invoice invoice,
+            Product product, BigDecimal price, int quantity, BigDecimal value) {
         this.product = product;
         this.price = price;
         this.quantity = quantity;
         this.value = value;
+        this.invoice = invoice;
     }
 
     @Id
@@ -33,28 +37,10 @@ public class Item {
         return id;
     }
 
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    @NotNull
-    @Column(name = "PRODUCT")
-    public Product getProduct() {
-        return product;
-    }
-
-    private void setProduct(Product product) {
-        this.product = product;
-    }
-
     @NotNull
     @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
-    }
-
-    private void setPrice(BigDecimal price) {
-        this.price = price;
     }
 
     @NotNull
@@ -63,14 +49,42 @@ public class Item {
         return quantity;
     }
 
-    private void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     @NotNull
     @Column(name = "VALUE")
     public BigDecimal getValue() {
         return value;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PRODUCT_ID")
+    public Product getProduct() {
+        return product;
+    }
+
+    private void setProduct(Product product) {
+        this.product = product;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "INVOICE_ID")
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    private void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    private void setId(int id) {
+        this.id = id;
+    }
+
+    private void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    private void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     private void setValue(BigDecimal value) {

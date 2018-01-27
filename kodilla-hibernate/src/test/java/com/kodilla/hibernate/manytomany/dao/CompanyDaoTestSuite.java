@@ -14,7 +14,6 @@ import static org.junit.Assert.assertNotEquals;
 @SpringBootTest
 public class CompanyDaoTestSuite {
 
-
     @Autowired
     CompanyDao companyDao;
 
@@ -30,22 +29,27 @@ public class CompanyDaoTestSuite {
         Company greyMatter = new Company("Grey Matter");
 
         softwareMachine.getEmployees().add(johnSmith);
-        dataMaesters.getEmployees().add(stephanieClarckson);
-        dataMaesters.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(johnSmith);
-        greyMatter.getEmployees().add(lindaKovalsky);
-
         johnSmith.getCompanies().add(softwareMachine);
-        johnSmith.getCompanies().add(greyMatter);
+
+        dataMaesters.getEmployees().add(stephanieClarckson);
         stephanieClarckson.getCompanies().add(dataMaesters);
+
+        dataMaesters.getEmployees().add(lindaKovalsky);
         lindaKovalsky.getCompanies().add(dataMaesters);
+
+        greyMatter.getEmployees().add(johnSmith);
+        johnSmith.getCompanies().add(greyMatter);
+
+        greyMatter.getEmployees().add(lindaKovalsky);
         lindaKovalsky.getCompanies().add(greyMatter);
 
         //When
         companyDao.save(softwareMachine);
         int softwareMachineId = softwareMachine.getId();
+
         companyDao.save(dataMaesters);
         int dataMaestersId = dataMaesters.getId();
+
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
@@ -55,12 +59,12 @@ public class CompanyDaoTestSuite {
         assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        //try {
-        //    companyDao.delete(softwareMachineId);
-        //    companyDao.delete(dataMaestersId);
-        //    companyDao.delete(greyMatterId);
-        //} catch (Exception e) {
-        //    //do nothing
-        //}
+        try {
+            companyDao.delete(softwareMachineId);
+            companyDao.delete(dataMaestersId);
+            companyDao.delete(greyMatterId);
+        } catch (Exception e) {
+            //do nothing
+        }
     }
 }

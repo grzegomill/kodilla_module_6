@@ -6,6 +6,14 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQuery(
+        name = "Company.findCompaniesByThreeFristChars",
+        query = "SELECT * FROM companies " +
+                "WHERE upper(substr(company_name,1, 3))=:FIRST3CHARS",
+        resultClass = Company.class
+)
+
+
 @Entity
 @Table(name = "COMPANIES")
 

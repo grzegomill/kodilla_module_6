@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SpringRunner.class)
@@ -16,6 +19,8 @@ public class CompanyDaoTestSuite {
 
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     @Test
     public void testSaveManyToMany() {
@@ -53,18 +58,33 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
+        List<Employee> employees = employeeDao.findEmployesByLastName("SMITH");
+
+        List<Company> companies = companyDao.findCompaniesByThreeFristChars("SOF");
+
         //Then
+        assertEquals(1, employees.size());
+        assertEquals("John Smith", employees.get(0).getFirstname() + " " + employees.get(0).getLastname());
+
+        assertEquals(1, companies.size());
+        assertEquals("Software Machine", companies.get(0).getName());
+
         assertNotEquals(0, softwareMachineId);
         assertNotEquals(0, dataMaestersId);
         assertNotEquals(0, greyMatterId);
 
         //CleanUp
-//        try {
-//            companyDao.delete(softwareMachineId);
-//            companyDao.delete(dataMaestersId);
-//            companyDao.delete(greyMatterId);
-//        } catch (Exception e) {
-//            //do nothing
-//        }
+        try {
+            companyDao.delete(softwareMachineId);
+            companyDao.delete(dataMaestersId);
+            companyDao.delete(greyMatterId);
+//
+//            employeeDao.delete(johnSmith);
+//            employeeDao.delete(stephanieClarckson);
+//            employeeDao.delete(lindaKovalsky);
+
+        } catch (Exception e) {
+            //do nothing
+        }
     }
 }

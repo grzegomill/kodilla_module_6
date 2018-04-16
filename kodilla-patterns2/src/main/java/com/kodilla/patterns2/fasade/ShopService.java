@@ -18,7 +18,7 @@ public class ShopService {
     private ProductService productService;
 
 
-    public Long openOrder(Long userId) {
+    public Long openOrder(long userId) {
 
         if (authenticator.isAuthenticated(userId)) {
 
@@ -37,5 +37,21 @@ public class ShopService {
             return -1L;
         }
     }
+
+
+    public void addItem(long orderId, long productId, double qty) {
+
+        orders.stream()
+                .filter(o -> o.getOrderId().equals(orderId))
+                .forEach(o -> o.getItems().add(new Item(productId, qty)));
+
+    }
+
+
+    public boolean removeItem(long orderId, long productId) {
+
+        return true;
+    }
+
 
 }

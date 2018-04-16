@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NamedQuery(name = "Employee.findEmployesByLastName",
-        query = "FROM Employee WHERE Upper(lastname)=:LAST_NAME")
+        query = "SELECT * FROM Employee WHERE Upper(lastname)=:LAST_NAME")
 
 
 @Entity

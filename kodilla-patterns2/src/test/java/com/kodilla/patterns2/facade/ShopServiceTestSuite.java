@@ -18,6 +18,7 @@ public class ShopServiceTestSuite {
 
     @Autowired
     private ShopService shopService;
+
     @Autowired
     private OrderFacade orderFacade;
 

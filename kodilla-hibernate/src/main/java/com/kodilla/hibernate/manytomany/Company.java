@@ -13,6 +13,13 @@ import java.util.List;
         resultClass = Company.class
 )
 
+@NamedQueries(
+        {
+                @NamedQuery(name = "Company.findCompaniesLikeByName",
+                        query = "FROM Company WHERE Upper(company_name) like :PART_NAME")
+        }
+)
+
 
 @Entity
 @Table(name = "COMPANIES")

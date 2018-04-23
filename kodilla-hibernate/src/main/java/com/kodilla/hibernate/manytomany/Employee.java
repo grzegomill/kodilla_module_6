@@ -6,8 +6,17 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(name = "Employee.findEmployesByLastName",
-        query = "SELECT * FROM Employee WHERE Upper(lastname)=:LAST_NAME")
+
+@NamedQueries(
+        {
+                @NamedQuery(name = "Employee.findEmployesByLastName",
+                        query = "FROM Employee WHERE Upper(lastname)=:LAST_NAME"),
+
+
+                @NamedQuery(name = "Employee.findEmployesLikeByLastName",
+                        query = "FROM Employee WHERE Upper(lastname) like :PART_LAST_NAME")
+        }
+)
 
 
 @Entity
